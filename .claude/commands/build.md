@@ -20,3 +20,5 @@ Read and execute: `$ARGUMENTS`
    - Files created/modified  
    - Test results (if applicable)
    - Any deviations from plan and why
+
+5. **Update our Progress.md**

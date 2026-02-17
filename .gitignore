@@ -1,0 +1,5 @@
+.vscode/
+.DS_Store
+supabase/.branches/
+supabase/.temp/
+supabase/snippets/
