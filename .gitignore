@@ -3,3 +3,4 @@
 supabase/.branches/
 supabase/.temp/
 supabase/snippets/
+.env.test

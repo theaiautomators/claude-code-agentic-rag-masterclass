@@ -3,6 +3,7 @@ from typing import AsyncGenerator
 
 from langsmith import traceable
 
+from config import settings
 from services.openai_client import get_openai_client
 from services.thread_service import ThreadService
 
@@ -41,6 +42,10 @@ class ChatService:
             previous_response_id=previous_response_id,
             store=True,
             stream=True,
+            tools=[{
+                "type": "file_search",
+                "vector_store_ids": [settings.openai_vector_store_id],
+            }] if settings.openai_vector_store_id else [],
         )
 
         for event in stream:
