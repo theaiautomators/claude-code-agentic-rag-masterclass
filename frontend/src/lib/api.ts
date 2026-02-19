@@ -38,6 +38,26 @@ export async function apiDelete(path: string): Promise<void> {
   if (!res.ok) throw new Error(`API error: ${res.status}`)
 }
 
+export async function apiUploadFile<T>(path: string, file: File): Promise<T> {
+  const headers = await getAuthHeaders()
+  // Remove Content-Type — let browser set multipart boundary
+  delete headers["Content-Type"]
+
+  const formData = new FormData()
+  formData.append("file", file)
+
+  const res = await fetch(`${API_BASE}${path}`, {
+    method: "POST",
+    headers,
+    body: formData,
+  })
+  if (!res.ok) {
+    const errorData = await res.json().catch(() => ({ detail: `Upload error: ${res.status}` }))
+    throw new Error(errorData.detail || `Upload error: ${res.status}`)
+  }
+  return res.json()
+}
+
 export async function apiStreamPost(
   path: string,
   body: unknown,

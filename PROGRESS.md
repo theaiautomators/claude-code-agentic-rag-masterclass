@@ -23,14 +23,20 @@ Track your progress through the masterclass. Update this file as you complete mo
 - [x] End-to-end validation — sign up, create thread, send message, streamed response works
 
 ### Module 2: BYO Retrieval + Memory
-- [ ] Ingestion UI (file upload, drag-and-drop)
-- [ ] File storage (Supabase Storage)
-- [ ] Chunking + embedding pipeline
-- [ ] pgvector search
-- [ ] Switch from Responses API to Chat Completions API (OpenRouter/Ollama/LM Studio)
-- [ ] Chat history storage (stateless API — manage memory ourselves)
-- [ ] Retrieval tool for the LLM
-- [ ] Realtime ingestion status (Supabase Realtime)
+- [x] Switch from Responses API to Chat Completions API (OpenRouter)
+- [x] Chat history storage (stateless API — send full history each request)
+- [x] Database migration (pgvector, documents + chunks tables, search function, storage bucket, realtime)
+- [x] File storage (Supabase Storage)
+- [x] Chunking + embedding pipeline
+- [x] Ingestion UI (file upload, drag-and-drop)
+- [x] Realtime ingestion status (Supabase Realtime)
+- [x] pgvector search
+- [x] Retrieval tool for the LLM (tool calling with search_documents)
+
+### Module 2.5: Shared/Global Documents
+- [x] Database migration (is_shared column, updated RLS policies, updated search_chunks function)
+- [x] Backend — list_documents returns owned + shared docs, DocumentResponse includes is_shared/user_id
+- [x] Frontend — "Shared" badge on shared docs, delete button hidden for non-owners
 
 ### Module 3: Record Manager
 - [ ] Not started
@@ -52,24 +58,16 @@ Track your progress through the masterclass. Update this file as you complete mo
 
 ## Next Steps
 
-Module 1 is complete and working. The next module is **Module 2: BYO Retrieval + Memory**.
+Module 2.5 (Shared Documents) is complete. The next module is **Module 3: Record Manager**.
 
-Before starting Module 2, a key architectural decision must be made (see PRD.md "Architectural Decision" section):
-- **Option A:** Remove Responses API code entirely, rebuild on Chat Completions API
-- **Option B:** Keep both approaches, configurable per request
-- The video course chose **Option A** (clean break)
+### What was done in Module 2:
+1. **Phase 1:** Switched from OpenAI Responses API to Chat Completions API via OpenRouter
+2. **Phase 2:** Created database migration — pgvector extension, documents/chunks tables, vector search function, storage bucket, realtime
+3. **Phase 3:** Built full ingestion pipeline — storage, document service, chunking, embedding, background processing
+4. **Phase 4:** Built documents UI — drag-and-drop upload, document list with live Realtime status updates
+5. **Phase 5:** Implemented RAG retrieval via tool calling — LLM calls search_documents tool, gets relevant chunks, answers with citations
 
-### What Module 2 involves:
-1. Decide on Option A vs B (or something else)
-2. Build the ingestion UI (file upload)
-3. Implement chunking + embedding pipeline (store in pgvector)
-4. Build retrieval tool for the LLM
-5. Switch to Chat Completions API (stateless — send full chat history each request)
-6. Store chat history in our own database (instead of OpenAI managing it)
-7. Add Supabase Realtime for ingestion status updates
-
-### Optional improvements to Module 1 before moving on:
-- Set up LangSmith (get free API key at https://smith.langchain.com, set `LANGSMITH_TRACING=true` in backend/.env)
-- Thread title auto-update (currently uses first 50 chars — could use LLM to generate a title)
-- Error toasts instead of silent failures
-- Mobile responsive sidebar
+### What was done in Module 2.5 (Shared Documents):
+1. **DB migration** (`003_shared_documents.sql`) — added `is_shared` column, updated RLS on documents/chunks to allow SELECT of shared docs, updated `search_chunks()` to include shared docs in RAG results, marked 10 existing docs as shared
+2. **Backend** — `list_documents()` returns owned + shared docs via PostgREST `or` filter; `DocumentResponse` now includes `is_shared` and `user_id`
+3. **Frontend** — Purple "Shared" badge on shared documents; delete button only shown to the document owner

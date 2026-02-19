@@ -13,7 +13,13 @@ async def health_check():
 @router.get("/health/services")
 async def service_health():
     return {
-        "openai": {
+        "llm": {
+            "provider": "openrouter" if settings.openrouter_api_key else "openai",
+            "configured": bool(settings.openrouter_api_key or settings.openai_api_key),
+            "model": settings.llm_model,
+        },
+        "embeddings": {
+            "provider": "openai",
             "configured": bool(settings.openai_api_key),
         },
         "langsmith": {

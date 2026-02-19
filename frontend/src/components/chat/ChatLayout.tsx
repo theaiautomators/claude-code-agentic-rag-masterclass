@@ -9,9 +9,10 @@ import { SettingsPage } from "@/components/settings/SettingsPage"
 import { DebugPage } from "@/components/debug/DebugPage"
 import { Button } from "@/components/ui/button"
 import { Separator } from "@/components/ui/separator"
-import { MessageSquare, Settings, Bug } from "lucide-react"
+import { MessageSquare, Settings, Bug, FileText } from "lucide-react"
+import { DocumentsPage } from "@/components/documents/DocumentsPage"
 
-type Page = "chat" | "settings" | "debug"
+type Page = "chat" | "settings" | "debug" | "documents"
 
 export function ChatLayout() {
   const { user, signOut } = useAuth()
@@ -54,6 +55,7 @@ export function ChatLayout() {
 
   const navItems: { page: Page; icon: typeof MessageSquare; label: string }[] = [
     { page: "chat", icon: MessageSquare, label: "Chat" },
+    { page: "documents", icon: FileText, label: "Docs" },
     { page: "settings", icon: Settings, label: "Settings" },
     { page: "debug", icon: Bug, label: "Debug" },
   ]
@@ -115,10 +117,11 @@ export function ChatLayout() {
       <div className="flex flex-1 flex-col">
         {activePage === "chat" && (
           <>
-            <MessageList messages={messages} isStreaming={isStreaming} />
+            <MessageList messages={messages} isStreaming={isStreaming} onSend={handleSend} />
             <ChatInput onSend={handleSend} disabled={isStreaming} />
           </>
         )}
+        {activePage === "documents" && <DocumentsPage />}
         {activePage === "settings" && <SettingsPage />}
         {activePage === "debug" && <DebugPage />}
       </div>

@@ -8,9 +8,12 @@ class Settings(BaseSettings):
     supabase_service_role_key: str
     supabase_jwt_secret: str
 
-    # OpenAI
+    # OpenAI (used for embeddings)
     openai_api_key: str
-    openai_vector_store_id: str = ""
+
+    # OpenRouter (used for LLM chat completions)
+    openrouter_api_key: str = ""
+    llm_model: str = "gpt-4.1"
 
     # LangSmith
     langsmith_tracing: str = "true"
@@ -22,6 +25,7 @@ class Settings(BaseSettings):
 
     class Config:
         env_file = ".env"
+        extra = "ignore"
 
 
 settings = Settings()

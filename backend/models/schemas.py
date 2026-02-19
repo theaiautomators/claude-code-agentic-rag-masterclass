@@ -32,3 +32,22 @@ class MessageResponse(BaseModel):
 
 class ThreadMessagesResponse(BaseModel):
     messages: list[MessageResponse]
+
+
+# Documents
+class DocumentResponse(BaseModel):
+    id: str
+    user_id: str
+    filename: str
+    file_type: str
+    file_size: int
+    status: str
+    error_message: Optional[str] = None
+    chunk_count: int = 0
+    is_shared: bool = False
+    created_at: datetime
+    updated_at: datetime
+
+
+class DocumentListResponse(BaseModel):
+    documents: list[DocumentResponse]
