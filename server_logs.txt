@@ -1,0 +1,421 @@
+INFO:     Will watch for changes in these directories: ['/Users/salehloke/Developer/project/claude-code-agentic-rag-masterclass']
+INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+INFO:     Started reloader process [64916] using StatReload
+INFO:     Started server process [64927]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  StatReload detected changes in 'server/schemas.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [64927]
+INFO:     Started server process [84885]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  StatReload detected changes in 'server/metadata.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [84885]
+INFO:     Started server process [85241]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  StatReload detected changes in 'server/metadata.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [85241]
+INFO:     Started server process [85593]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  StatReload detected changes in 'server/metadata.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [85593]
+INFO:     Started server process [85618]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  StatReload detected changes in 'server/embeddings.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [85618]
+WARNING:  StatReload detected changes in 'server/main.py'. Reloading...
+INFO:     Started server process [86706]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [86706]
+INFO:     Started server process [86725]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  StatReload detected changes in 'server/main.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [86725]
+WARNING:  StatReload detected changes in 'server/main.py'. Reloading...
+INFO:     Started server process [87088]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [87088]
+INFO:     Started server process [87107]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     127.0.0.1:54797 - "OPTIONS /threads HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54798 - "OPTIONS /threads HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54799 - "OPTIONS /threads HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54800 - "OPTIONS /threads HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54801 - "OPTIONS /threads HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54802 - "OPTIONS /threads HTTP/1.1" 200 OK
+[03/07/26 16:32:13] INFO     HTTP Request: GET                   _client.py:1025
+                             http://127.0.0.1:54321/auth/v1/user                
+                             "HTTP/1.1 403 Forbidden"                           
+INFO:     127.0.0.1:54797 - "GET /threads HTTP/1.1" 401 Unauthorized
+                    INFO     HTTP Request: GET                   _client.py:1025
+                             http://127.0.0.1:54321/auth/v1/user                
+                             "HTTP/1.1 403 Forbidden"                           
+INFO:     127.0.0.1:54802 - "GET /threads HTTP/1.1" 401 Unauthorized
+                    INFO     HTTP Request: GET                   _client.py:1025
+                             http://127.0.0.1:54321/auth/v1/user                
+                             "HTTP/1.1 403 Forbidden"                           
+INFO:     127.0.0.1:54797 - "GET /threads HTTP/1.1" 401 Unauthorized
+                    INFO     HTTP Request: GET                   _client.py:1025
+                             http://127.0.0.1:54321/auth/v1/user                
+                             "HTTP/1.1 403 Forbidden"                           
+INFO:     127.0.0.1:54802 - "GET /threads HTTP/1.1" 401 Unauthorized
+                    INFO     HTTP Request: GET                   _client.py:1025
+                             http://127.0.0.1:54321/auth/v1/user                
+                             "HTTP/1.1 403 Forbidden"                           
+INFO:     127.0.0.1:54797 - "GET /threads HTTP/1.1" 401 Unauthorized
+                    INFO     HTTP Request: GET                   _client.py:1025
+                             http://127.0.0.1:54321/auth/v1/user                
+                             "HTTP/1.1 403 Forbidden"                           
+INFO:     127.0.0.1:54802 - "GET /threads HTTP/1.1" 401 Unauthorized
+WARNING:  StatReload detected changes in 'server/main.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [87107]
+INFO:     Started server process [87816]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+[03/07/26 16:32:24] INFO     HTTP Request: GET                   _client.py:1025
+                             http://127.0.0.1:54321/auth/v1/user                
+                             "HTTP/1.1 200 OK"                                  
+                    INFO     HTTP Request: GET                   _client.py:1025
+                             http://127.0.0.1:54321/rest/v1/thre                
+                             ads?select=%2A&order=created_at.des                
+                             c "HTTP/1.1 200 OK"                                
+INFO:     127.0.0.1:54875 - "GET /threads HTTP/1.1" 200 OK
+[03/07/26 16:32:25] INFO     HTTP Request: GET                   _client.py:1025
+                             http://127.0.0.1:54321/auth/v1/user                
+                             "HTTP/1.1 200 OK"                                  
+                    INFO     HTTP Request: GET                   _client.py:1025
+                             http://127.0.0.1:54321/rest/v1/thre                
+                             ads?select=%2A&order=created_at.des                
+                             c "HTTP/1.1 200 OK"                                
+INFO:     127.0.0.1:54875 - "GET /threads HTTP/1.1" 200 OK
+                    INFO     HTTP Request: GET                   _client.py:1025
+                             http://127.0.0.1:54321/auth/v1/user                
+                             "HTTP/1.1 200 OK"                                  
+                    INFO     HTTP Request: GET                   _client.py:1025
+                             http://127.0.0.1:54321/rest/v1/thre                
+                             ads?select=%2A&order=created_at.des                
+                             c "HTTP/1.1 200 OK"                                
+INFO:     127.0.0.1:54875 - "GET /threads HTTP/1.1" 200 OK
+                    INFO     HTTP Request: GET                   _client.py:1025
+                             http://127.0.0.1:54321/auth/v1/user                
+                             "HTTP/1.1 200 OK"                                  
+                    INFO     HTTP Request: GET                   _client.py:1025
+                             http://127.0.0.1:54321/rest/v1/thre                
+                             ads?select=%2A&order=created_at.des                
+                             c "HTTP/1.1 200 OK"                                
+INFO:     127.0.0.1:54875 - "GET /threads HTTP/1.1" 200 OK
+WARNING:  StatReload detected changes in 'server/main.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [87816]
+INFO:     Started server process [88552]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  StatReload detected changes in 'server/main.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [88552]
+INFO:     Started server process [89313]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  StatReload detected changes in 'server/main.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [89313]
+INFO:     Started server process [89686]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     127.0.0.1:57556 - "OPTIONS /threads HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57557 - "OPTIONS /threads HTTP/1.1" 200 OK
+[03/07/26 16:41:44] INFO     HTTP Request: GET                   _client.py:1025
+                             http://127.0.0.1:54321/auth/v1/user                
+                             "HTTP/1.1 200 OK"                                  
+                    INFO     HTTP Request: GET                   _client.py:1025
+                             http://127.0.0.1:54321/rest/v1/thre                
+                             ads?select=%2A&order=created_at.des                
+                             c "HTTP/1.1 200 OK"                                
+INFO:     127.0.0.1:57556 - "GET /threads HTTP/1.1" 200 OK
+                    INFO     HTTP Request: GET                   _client.py:1025
+                             http://127.0.0.1:54321/auth/v1/user                
+                             "HTTP/1.1 200 OK"                                  
+                    INFO     HTTP Request: GET                   _client.py:1025
+                             http://127.0.0.1:54321/rest/v1/thre                
+                             ads?select=%2A&order=created_at.des                
+                             c "HTTP/1.1 200 OK"                                
+INFO:     127.0.0.1:57556 - "GET /threads HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57556 - "OPTIONS /documents HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57558 - "OPTIONS /documents HTTP/1.1" 200 OK
+[03/07/26 16:41:49] INFO     HTTP Request: GET                   _client.py:1025
+                             http://127.0.0.1:54321/auth/v1/user                
+                             "HTTP/1.1 200 OK"                                  
+                    INFO     HTTP Request: GET                   _client.py:1025
+                             http://127.0.0.1:54321/rest/v1/docu                
+                             ments?select=id%2Cfilename%2Cstatus                
+                             %2Cchunk_count%2Ccontent_hash%2Ccre                
+                             ated_at%2Cproject_id%2Cprojects%28i                
+                             d%2Cname%29&order=created_at.desc                  
+                             "HTTP/1.1 200 OK"                                  
+INFO:     127.0.0.1:57556 - "GET /documents HTTP/1.1" 200 OK
+                    INFO     HTTP Request: GET                   _client.py:1025
+                             http://127.0.0.1:54321/auth/v1/user                
+                             "HTTP/1.1 200 OK"                                  
+                    INFO     HTTP Request: GET                   _client.py:1025
+                             http://127.0.0.1:54321/rest/v1/docu                
+                             ments?select=id%2Cfilename%2Cstatus                
+                             %2Cchunk_count%2Ccontent_hash%2Ccre                
+                             ated_at%2Cproject_id%2Cprojects%28i                
+                             d%2Cname%29&order=created_at.desc                  
+                             "HTTP/1.1 200 OK"                                  
+INFO:     127.0.0.1:57556 - "GET /documents HTTP/1.1" 200 OK
+[03/07/26 16:41:52] INFO     HTTP Request: GET                   _client.py:1025
+                             http://127.0.0.1:54321/auth/v1/user                
+                             "HTTP/1.1 200 OK"                                  
+                    INFO     HTTP Request: GET                   _client.py:1025
+                             http://127.0.0.1:54321/rest/v1/thre                
+                             ads?select=%2A&order=created_at.des                
+                             c "HTTP/1.1 200 OK"                                
+INFO:     127.0.0.1:57556 - "GET /threads HTTP/1.1" 200 OK
+                    INFO     HTTP Request: GET                   _client.py:1025
+                             http://127.0.0.1:54321/auth/v1/user                
+                             "HTTP/1.1 200 OK"                                  
+                    INFO     HTTP Request: GET                   _client.py:1025
+                             http://127.0.0.1:54321/rest/v1/thre                
+                             ads?select=%2A&order=created_at.des                
+                             c "HTTP/1.1 200 OK"                                
+INFO:     127.0.0.1:57556 - "GET /threads HTTP/1.1" 200 OK
+[03/07/26 16:41:53] INFO     HTTP Request: GET                   _client.py:1025
+                             http://127.0.0.1:54321/auth/v1/user                
+                             "HTTP/1.1 200 OK"                                  
+                    INFO     HTTP Request: POST                  _client.py:1025
+                             http://127.0.0.1:54321/rest/v1/thre                
+                             ads "HTTP/1.1 201 Created"                         
+INFO:     127.0.0.1:57556 - "POST /threads HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57556 - "OPTIONS /threads/281273e5-7de2-447f-9a04-01acab23483f/messages HTTP/1.1" 200 OK
+                    INFO     HTTP Request: GET                   _client.py:1025
+                             http://127.0.0.1:54321/auth/v1/user                
+                             "HTTP/1.1 200 OK"                                  
+                    INFO     HTTP Request: GET                   _client.py:1025
+                             http://127.0.0.1:54321/rest/v1/mess                
+                             ages?select=%2A&thread_id=eq.281273                
+                             e5-7de2-447f-9a04-01acab23483f&orde                
+                             r=created_at.asc "HTTP/1.1 200 OK"                 
+INFO:     127.0.0.1:57558 - "GET /threads/281273e5-7de2-447f-9a04-01acab23483f/messages HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57558 - "OPTIONS /chat HTTP/1.1" 200 OK
+[03/07/26 16:41:58] INFO     HTTP Request: GET                   _client.py:1025
+                             http://127.0.0.1:54321/auth/v1/user                
+                             "HTTP/1.1 200 OK"                                  
+                    INFO     HTTP Request: POST                  _client.py:1025
+                             http://127.0.0.1:54321/rest/v1/mess                
+                             ages "HTTP/1.1 201 Created"                        
+[03/07/26 16:41:59] INFO     HTTP Request: POST                  _client.py:1025
+                             https://generativelanguage.googleap                
+                             is.com/v1beta/models/gemini-embeddi                
+                             ng-001:batchEmbedContents "HTTP/1.1                
+                             200 OK"                                            
+                    INFO     HTTP Request: POST                  _client.py:1025
+                             http://127.0.0.1:54321/rest/v1/rpc/                
+                             search_chunks "HTTP/1.1 200 OK"                    
+                    INFO     HTTP Request: POST                  _client.py:1025
+                             http://127.0.0.1:54321/rest/v1/rpc/                
+                             keyword_search_chunks "HTTP/1.1 200                
+                             OK"                                                
+                    INFO     HTTP Request: GET                   _client.py:1025
+                             http://127.0.0.1:54321/rest/v1/mess                
+                             ages?select=role%2Ccontent&thread_i                
+                             d=eq.281273e5-7de2-447f-9a04-01acab                
+                             23483f&order=created_at.asc                        
+                             "HTTP/1.1 200 OK"                                  
+INFO:     127.0.0.1:57556 - "POST /chat HTTP/1.1" 200 OK
+[03/07/26 16:42:16] INFO     HTTP Request: POST                  _client.py:1740
+                             http://127.0.0.1:11434/api/chat                    
+                             "HTTP/1.1 200 OK"                                  
+INFO:     127.0.0.1:57584 - "POST /chat HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:61979 - "OPTIONS /threads HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61979 - "GET /threads HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:61979 - "OPTIONS /chat HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61980 - "POST /chat HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:62135 - "POST /chat HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:62822 - "POST /threads HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:62870 - "GET /threads HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:62872 - "GET /threads HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:62870 - "GET /threads HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:62872 - "GET /threads HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:62870 - "GET /threads HTTP/1.1" 401 Unauthorized
+WARNING:  StatReload detected changes in 'server/api.py'. Reloading...
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/Users/salehloke/Developer/project/claude-code-agentic-rag-masterclass/server/venv/lib/python3.14/site-packages/httpx/_transports/default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "/Users/salehloke/Developer/project/claude-code-agentic-rag-masterclass/server/venv/lib/python3.14/site-packages/httpx/_transports/default.py", line 250, in handle_request
+    resp = self._pool.handle_request(req)
+  File "/Users/salehloke/Developer/project/claude-code-agentic-rag-masterclass/server/venv/lib/python3.14/site-packages/httpcore/_sync/connection_pool.py", line 256, in handle_request
+    raise exc from None
+  File "/Users/salehloke/Developer/project/claude-code-agentic-rag-masterclass/server/venv/lib/python3.14/site-packages/httpcore/_sync/connection_pool.py", line 236, in handle_request
+    response = connection.handle_request(
+        pool_request.request
+    )
+  File "/Users/salehloke/Developer/project/claude-code-agentic-rag-masterclass/server/venv/lib/python3.14/site-packages/httpcore/_sync/connection.py", line 101, in handle_request
+    raise exc
+  File "/Users/salehloke/Developer/project/claude-code-agentic-rag-masterclass/server/venv/lib/python3.14/site-packages/httpcore/_sync/connection.py", line 78, in handle_request
+    stream = self._connect(request)
+  File "/Users/salehloke/Developer/project/claude-code-agentic-rag-masterclass/server/venv/lib/python3.14/site-packages/httpcore/_sync/connection.py", line 124, in _connect
+    stream = self._network_backend.connect_tcp(**kwargs)
+  File "/Users/salehloke/Developer/project/claude-code-agentic-rag-masterclass/server/venv/lib/python3.14/site-packages/httpcore/_backends/sync.py", line 207, in connect_tcp
+    with map_exceptions(exc_map):
+         ~~~~~~~~~~~~~~^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.3_1/Frameworks/Python.framework/Versions/3.14/lib/python3.14/contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "/Users/salehloke/Developer/project/claude-code-agentic-rag-masterclass/server/venv/lib/python3.14/site-packages/httpcore/_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectError: [Errno 61] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/salehloke/Developer/project/claude-code-agentic-rag-masterclass/server/venv/lib/python3.14/site-packages/uvicorn/protocols/http/h11_impl.py", line 410, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        self.scope, self.receive, self.send
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/salehloke/Developer/project/claude-code-agentic-rag-masterclass/server/venv/lib/python3.14/site-packages/uvicorn/middleware/proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/salehloke/Developer/project/claude-code-agentic-rag-masterclass/server/venv/lib/python3.14/site-packages/fastapi/applications.py", line 1160, in __call__
+    await super().__call__(scope, receive, send)
+  File "/Users/salehloke/Developer/project/claude-code-agentic-rag-masterclass/server/venv/lib/python3.14/site-packages/starlette/applications.py", line 107, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/salehloke/Developer/project/claude-code-agentic-rag-masterclass/server/venv/lib/python3.14/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    raise exc
+  File "/Users/salehloke/Developer/project/claude-code-agentic-rag-masterclass/server/venv/lib/python3.14/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/Users/salehloke/Developer/project/claude-code-agentic-rag-masterclass/server/venv/lib/python3.14/site-packages/starlette/middleware/cors.py", line 95, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "/Users/salehloke/Developer/project/claude-code-agentic-rag-masterclass/server/venv/lib/python3.14/site-packages/starlette/middleware/cors.py", line 153, in simple_response
+    await self.app(scope, receive, send)
+  File "/Users/salehloke/Developer/project/claude-code-agentic-rag-masterclass/server/venv/lib/python3.14/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/Users/salehloke/Developer/project/claude-code-agentic-rag-masterclass/server/venv/lib/python3.14/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/salehloke/Developer/project/claude-code-agentic-rag-masterclass/server/venv/lib/python3.14/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/salehloke/Developer/project/claude-code-agentic-rag-masterclass/server/venv/lib/python3.14/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/salehloke/Developer/project/claude-code-agentic-rag-masterclass/server/venv/lib/python3.14/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/salehloke/Developer/project/claude-code-agentic-rag-masterclass/server/venv/lib/python3.14/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "/Users/salehloke/Developer/project/claude-code-agentic-rag-masterclass/server/venv/lib/python3.14/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "/Users/salehloke/Developer/project/claude-code-agentic-rag-masterclass/server/venv/lib/python3.14/site-packages/fastapi/routing.py", line 130, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/Users/salehloke/Developer/project/claude-code-agentic-rag-masterclass/server/venv/lib/python3.14/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/salehloke/Developer/project/claude-code-agentic-rag-masterclass/server/venv/lib/python3.14/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/salehloke/Developer/project/claude-code-agentic-rag-masterclass/server/venv/lib/python3.14/site-packages/fastapi/routing.py", line 117, in app
+    await response(scope, receive, send)
+  File "/Users/salehloke/Developer/project/claude-code-agentic-rag-masterclass/server/venv/lib/python3.14/site-packages/starlette/responses.py", line 269, in __call__
+    with collapse_excgroups():
+         ~~~~~~~~~~~~~~~~~~^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.3_1/Frameworks/Python.framework/Versions/3.14/lib/python3.14/contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "/Users/salehloke/Developer/project/claude-code-agentic-rag-masterclass/server/venv/lib/python3.14/site-packages/starlette/_utils.py", line 87, in collapse_excgroups
+    raise exc
+  File "/Users/salehloke/Developer/project/claude-code-agentic-rag-masterclass/server/venv/lib/python3.14/site-packages/starlette/responses.py", line 273, in wrap
+    await func()
+  File "/Users/salehloke/Developer/project/claude-code-agentic-rag-masterclass/server/venv/lib/python3.14/site-packages/starlette/responses.py", line 253, in stream_response
+    async for chunk in self.body_iterator:
+    ...<2 lines>...
+        await send({"type": "http.response.body", "body": chunk, "more_body": True})
+  File "/Users/salehloke/Developer/project/claude-code-agentic-rag-masterclass/server/api.py", line 120, in generate
+    }).execute()
+       ~~~~~~~^^
+  File "/Users/salehloke/Developer/project/claude-code-agentic-rag-masterclass/server/venv/lib/python3.14/site-packages/postgrest/_sync/request_builder.py", line 47, in execute
+    r = self.request.send()
+  File "/Users/salehloke/Developer/project/claude-code-agentic-rag-masterclass/server/venv/lib/python3.14/site-packages/postgrest/base_request_builder.py", line 82, in send
+    return self.session.request(
+           ~~~~~~~~~~~~~~~~~~~~^
+        self.http_method,
+        ^^^^^^^^^^^^^^^^^
+    ...<4 lines>...
+        auth=self.auth,
+        ^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/salehloke/Developer/project/claude-code-agentic-rag-masterclass/server/venv/lib/python3.14/site-packages/httpx/_client.py", line 825, in request
+    return self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/salehloke/Developer/project/claude-code-agentic-rag-masterclass/server/venv/lib/python3.14/site-packages/httpx/_client.py", line 914, in send
+    response = self._send_handling_auth(
+        request,
+    ...<2 lines>...
+        history=[],
+    )
+  File "/Users/salehloke/Developer/project/claude-code-agentic-rag-masterclass/server/venv/lib/python3.14/site-packages/httpx/_client.py", line 942, in _send_handling_auth
+    response = self._send_handling_redirects(
+        request,
+        follow_redirects=follow_redirects,
+        history=history,
+    )
+  File "/Users/salehloke/Developer/project/claude-code-agentic-rag-masterclass/server/venv/lib/python3.14/site-packages/httpx/_client.py", line 979, in _send_handling_redirects
+    response = self._send_single_request(request)
+  File "/Users/salehloke/Developer/project/claude-code-agentic-rag-masterclass/server/venv/lib/python3.14/site-packages/httpx/_client.py", line 1014, in _send_single_request
+    response = transport.handle_request(request)
+  File "/Users/salehloke/Developer/project/claude-code-agentic-rag-masterclass/server/venv/lib/python3.14/site-packages/httpx/_transports/default.py", line 249, in handle_request
+    with map_httpcore_exceptions():
+         ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.3_1/Frameworks/Python.framework/Versions/3.14/lib/python3.14/contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "/Users/salehloke/Developer/project/claude-code-agentic-rag-masterclass/server/venv/lib/python3.14/site-packages/httpx/_transports/default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectError: [Errno 61] Connection refused
+--- Logging error ---
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [89686]
+INFO:     Started server process [55152]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.

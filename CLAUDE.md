@@ -1,27 +1,31 @@
 # CLAUDE.md
 
-RAG app with chat (default) and document ingestion interfaces. Config via env vars, no admin UI.
+MCP-first RAG server exposing ingestion, retrieval, search, and analysis tools via stdio transport. Consumed by Claude Code (or any MCP-compatible client). Optional web chat UI in Module 9.
 
 ## Stack
-- Frontend: React + Vite + Tailwind + shadcn/ui
-- Backend: Python + FastAPI
+- MCP Server: Python (stdio transport)
 - Database: Supabase (Postgres, pgvector, Auth, Storage, Realtime)
-- LLM: OpenAI (Module 1), OpenRouter (Module 2+)
+- Embeddings: Gemini API (free tier)
+- Reasoning LLM: Claude via Claude Code (no API key needed)
 - Observability: LangSmith
+- Frontend (Module 9): React + Vite + Tailwind + shadcn/ui
+- Web Backend (Module 9): Python + FastAPI
 
 ## Rules
 - Python backend must use a `venv` virtual environment
 - No LangChain, no LangGraph - raw SDK calls only
 - Use Pydantic for structured LLM outputs
-- All tables need Row-Level Security - users only see their own data
-- Stream chat responses via SSE
-- Use Supabase Realtime for ingestion status updates
-- Module 2+ uses stateless completions - store and send chat history yourself
-- Ingestion is manual file upload only - no connectors or automated pipelines
+- MCP server uses stdio transport
+- Claude Code provides the reasoning LLM - no separate chat/completion API key needed
+- All tables need Row-Level Security - users only see their own data (enforced in Module 9)
+- Stream chat responses via SSE (Module 9)
+- Use Supabase Realtime for ingestion status updates (Module 9)
+- Ingestion is manual only - via MCP tool calls or drag-and-drop (Module 9). No connectors or automated pipelines
 
 ## Planning
-- Save all plans to `.agent/plans/` folder
+- Save all plans to `docs/02_backlog/` folder
 - Naming convention: `{sequence}.{plan-name}.md` (e.g., `1.auth-setup.md`, `2.document-ingestion.md`)
+- Move to `docs/01_active/` when work begins; move to `docs/04_completed/` when done
 - Plans should be detailed enough to execute without ambiguity
 - Each task in the plan must include at least one validation test to verify it works
 - Assess complexity and single-pass feasibility - can an agent realistically complete this in one go?
@@ -31,7 +35,7 @@ RAG app with chat (default) and document ingestion interfaces. Config via env va
   - 🔴 **Complex** - Break into sub-plans before executing
 
 ## Development Flow
-1. **Plan** - Create a detailed plan and save it to `.agent/plans/`
+1. **Plan** - Create a detailed plan and save it to `docs/02_backlog/`
 2. **Build** - Execute the plan to implement the feature
 3. **Validate** - Test and verify the implementation works correctly. Use browser testing where applicable via an appropriate MCP
 4. **Iterate** - Fix any issues found during validation

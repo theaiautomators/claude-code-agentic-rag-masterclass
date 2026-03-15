@@ -1,0 +1,227 @@
+Technical Implementation Guide: Building an Agentic RAG Application
+
+This guide outlines the architectural requirements and iterative development workflow for building a high-performance, agentic Retrieval-Augmented Generation (RAG) system. Unlike "Naive RAG," which focuses on simple semantic similarity, Agentic RAG leverages a suite of tools—including multi-format parsing, text-to-SQL, and sub-agent orchestration—to provide grounded, accurate insights from complex datasets.
+
+1. Introduction to Agentic RAG and the Development Philosophy
+
+The shift from Naive RAG to Agentic RAG represents a move from static pipelines to dynamic, reasoning-led retrieval.
+
+Comparison: Naive RAG vs. Agentic RAG
+
+Feature	Naive RAG	Agentic RAG
+Retrieval Mechanism	Pure Vector Search (Semantic)	Hybrid (Vector + BM25 + Text-to-SQL)
+Control Logic	Fixed script/pipeline	Agent-driven tool selection and loops
+Parsing	Basic text/Markdown extraction	Advanced (Dockling, VLM-based extraction)
+Context Management	Static window stuffing	Dynamic context isolation via Sub-Agents
+Capability	Surface-level similarity	Deep research, synthesis, and structured querying
+
+The Collaborative AI Loop
+
+Implementation follows the "Plan, Build, Validate, Iterate" cycle using Claude Code. This collaborative approach ensures that the solution evolves on a stable foundation rather than delegating the entire build to an autonomous loop that may drift from the PRD.
+
+1. Plan: Use Claude Code's "Plan Mode" to define features and acceptance criteria.
+2. Build: Execute the generation across frontend and backend layers.
+3. Validate: Perform automated (Playwright) and manual smoke tests.
+4. Iterate: Address edge cases by clearing context and refining specific logic.
+
+
+--------------------------------------------------------------------------------
+
+
+2. Technical Stack and System Architecture
+
+The application utilizes a vanilla stack to avoid framework overhead while maintaining high performance and type safety.
+
+Core Technologies
+
+* Frontend: React, TypeScript, Tailwind CSS, ShadCN UI, and Vite.
+* Backend: Python 3.11+, FastAPI, and Dockling for document parsing.
+* Infrastructure: Supabase (Auth, PGVector, File Storage, PostgREST).
+
+System Data Flow and Communication
+
+1. Client-Server Communication: The React frontend (Localhost: 5173) utilizes the Vite dev server for hot reloads. It communicates with the Python backend (Localhost: 8000) via HTTP for standard requests and Server-Sent Events (SSE) for real-time message streaming.
+2. Backend Orchestration: The FastAPI backend, running on Uvicorn, serves as the primary engine. It manages LLM tool calls, handles file processing through Dockling, and executes database operations.
+3. Remote Data Layer: Supabase handles multi-tenant authentication and persists high-dimensional vectors in PGVector. The frontend also maintains a real-time connection to Supabase for instant UI updates (e.g., file ingestion status).
+4. AI Layer: Orchestrated calls to cloud providers (OpenAI, OpenRouter) or local models (LM Studio) for reasoning and metadata extraction.
+
+
+--------------------------------------------------------------------------------
+
+
+3. Pre-Requisites and Project Onboarding
+
+Standardize the development environment to ensure the AI agent remains grounded in project rules and state.
+
+Environment Standards
+
+* claude.md: Global instructions, tech stack rules (e.g., use raw SDKs over heavy frameworks), and RLS requirements.
+* progress.md: Real-time state tracking of module status (Not Started, In Progress, Completed).
+* PRD.md: The "Source of Truth" for product requirements and the 8-module roadmap.
+
+Onboarding Workflow
+
+1. Install Claude Code: Ensure the CC Status Line is configured to monitor token usage and context window consumption.
+2. Ground the Agent: Execute the Onboarding Command (/onboard). This triggers the agent to scan the project structure and Git logs to determine the current state and identify the starting module.
+3. Context Monitoring: Monitor the status line; if usage exceeds 50%, reset the session using /clear to prevent performance degradation or hallucinations.
+
+
+--------------------------------------------------------------------------------
+
+
+4. Module 1: The App Shell and Managed RAG
+
+The objective is to establish a secure foundation using Supabase and an initial retrieval layer.
+
+Security Implementation
+
+Enable Role-Level Security (RLS) immediately. This is non-negotiable for multi-tenant isolation.
+
+Mandatory Security Requirement: Apply RLS policies to the threads, messages, and documents tables. Policies must ensure that a user can only query or modify data where user_id == auth.uid().
+
+Managed RAG Transition
+
+Avoid the sunsetting OpenAI Assistant API. Implement the OpenAI Responses API (or Gemini File Search) for the initial "Black Box" RAG shell. This provides an immediate functional chat interface while you prepare the custom pipeline.
+
+Required Environment Configuration
+
+Initialize the .env file with these critical keys:
+
+SUPABASE_URL=your_project_url
+SUPABASE_ANON_KEY=your_anon_key
+SUPABASE_SERVICE_ROLE_KEY=your_service_role_key # Required for backend admin tasks
+OPENAI_API_KEY=your_openai_key
+LANGSMITH_API_KEY=your_langsmith_key
+
+
+
+--------------------------------------------------------------------------------
+
+
+5. Modules 2 & 3: Custom Ingestion and Record Management
+
+Transition from "Black Box" managed services to a custom PGVector implementation.
+
+Task Sequencing
+
+1. Define Backend Models: Implement Pydantic schemas for document and chunk objects.
+2. Configure PGVector: Set up the Supabase database with the vector extension and define the embedding dimensions (e.g., 1536 or 3072).
+3. Hashing Logic: Implement SHA-256 content hashing in the Python ingestion service.
+4. Frontend Integration: Build the React upload component with real-time status tracking via Supabase.
+
+Record Management Strategy
+
+Use the Record Manager to prevent data redundancy.
+
+* Content Hashing: Generate a unique hash for every file. If a file is modified, the system must delete all old chunks and re-embed. This prevents "orphan chunks"—partial data from previous versions that contaminate retrieval.
+* De-duplication: If a hash exists and is unchanged, skip ingestion to save API costs.
+
+
+--------------------------------------------------------------------------------
+
+
+6. Modules 4 & 5: Metadata Extraction and Multi-Format Support
+
+Rich metadata allows the agent to filter the search space before executing semantic matching.
+
+Extraction Logic
+
+Use a structured LLM call to extract metadata from the first 8,000 characters of a document.
+
+class DocumentMetadata(BaseModel):
+    title: str
+    summary: str
+    topics: List[str]
+    document_type: str # e.g., 'manual', 'invoice', 'report'
+    language: str
+
+
+Dockling Implementation
+
+Integrate the Dockling library for PDF, DocX, and PowerPoint support.
+
+* Standard Pipeline: Use for high-speed text extraction on standard hardware.
+* VLM Pipeline: Use for complex layouts (tables, diagrams). Note: This requires significant VRAM (e.g., RTX 5090 or server-grade GPUs). Local execution of VLMs is recommended for air-gapped or privacy-sensitive builds.
+
+
+--------------------------------------------------------------------------------
+
+
+7. Module 6: Hybrid Search and Re-Ranking
+
+Semantic search alone is insufficient for queries involving specific product codes or acronyms.
+
+Optimization via RRF
+
+Implement Hybrid Search by combining Semantic (Vector) and Keyword (BM25) results using Reciprocal Rank Fusion (RRF). RRF normalizes the scores from these two disparate search methods, ensuring the most relevant documents rise to the top regardless of whether they were found via similarity or keyword match.
+
+Secondary Re-Ranking
+
+Add a re-ranking step using Cohere or a local Qwen-based re-ranker (e.g., bge-reranker). This model analyzes the top 10–20 results from the hybrid search and re-scores them based on the actual context of the query, significantly reducing the likelihood of the LLM grounding its answer in irrelevant data.
+
+
+--------------------------------------------------------------------------------
+
+
+8. Module 7: Agentic Tools (Web Search & Text-to-SQL)
+
+Expand the agent's capabilities with external tools. Integrate Tavily for web search fallbacks.
+
+Database Security: The "Read-Only User" Strategy
+
+When implementing Text-to-SQL, never allow the LLM to access the database using the main service role.
+
+1. Create a Restricted User: Configure a dedicated Postgres user (e.g., sql_reader).
+2. Isolate Connection: Use a specific connection string (SQL_READER_URL) pointed to Port 6543 (transaction pooler).
+3. Strict Permissions:
+
+
+--------------------------------------------------------------------------------
+
+
+9. Module 8: Orchestration with Sub-Agents
+
+Complex analysis requires Context Isolation. Loading a 40-page PDF into the main chat window degrades performance and increases costs.
+
+Sub-Agent Design
+
+When the user asks to "Analyze [Document]," the main agent calls the analyze_document tool. A specialized sub-agent is spawned which loads the entire document context (up to 70k+ tokens) to perform its task, returning only the summarized insight to the main agent.
+
+UI Requirements for Reasoning
+
+* Thought Bubbles: Implement a dedicated component to render <think> tags, visually separating the agent’s reasoning from its output.
+* Hide/Show Toggle: Allow users to collapse the "Thought Process" for a cleaner interface.
+* Nested Tool Indicators: Display nested tool calls with status indicators and green "complete" checkmarks to maintain transparency during long research tasks.
+
+
+--------------------------------------------------------------------------------
+
+
+10. Critical Management: Context and Observability
+
+Context management is the primary failure point in agentic systems.
+
+Monitoring & Token Hygiene
+
+* The 50% Rule: Monitor the status line. If the session consumes >50% of the context window, the agent will likely become sluggish or enter loops. Use /clear to refresh.
+* LangSmith Tracing: Use LangSmith to inspect every tool call. Verify the exact SQL generated and the chunks retrieved to diagnose failures.
+
+Beginner’s Troubleshooting Guide
+
+Issue	Diagnosis	Solution
+Zero results returned	Overly conservative metadata filtering ("Lazy Prompting").	Update system prompt to prioritize hybrid search over strict filters.
+204 / No Content error	Sub-agent failing to resolve a Document ID or File Mapping.	Verify the ID-to-FileName mapping in the analyze_document tool call.
+Agent enters a loop	Conflicting tool instructions or degraded context window.	Clear the session (/clear) and provide a more directive prompt.
+Slow streaming	Network latency or local model VRAM bottleneck.	Switch from local VLM to Standard Dockling pipeline or cloud-based LLM.
+
+
+--------------------------------------------------------------------------------
+
+
+11. Finalizing the Build: Version Control and Releases
+
+Maintain a rigorous Git workflow to manage the 8-module complexity.
+
+* Incremental Commits: Commit after every successful module validation.
+* Tagging: Use semantic tagging (e.g., v0.1 - App Shell, v0.4 - Metadata).
+* Alpha Status: The completed build is "Alpha." Before deployment, conduct manual regression testing and establish a formal strategy (Vercel/Cloudflare) for environment variables and migrations.

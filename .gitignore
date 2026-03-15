@@ -1,0 +1,14 @@
+.env
+node_modules/
+*.key
+*.pem
+*.secret
+__pycache__/
+*.pyc
+server/venv/
+.DS_Store
+*.log
+.env.local
+.env.*.local
+coverage/
+.nyc_output/

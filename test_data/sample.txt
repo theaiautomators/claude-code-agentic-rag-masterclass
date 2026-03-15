@@ -1,0 +1,19 @@
+Retrieval-Augmented Generation (RAG) is a technique that enhances large language models by providing them with relevant context from external knowledge sources. Rather than relying solely on the knowledge encoded in model weights during training, RAG systems retrieve relevant documents or passages at inference time and include them in the prompt.
+
+The RAG pipeline typically consists of several stages. First, documents are ingested and processed. This involves parsing various file formats, splitting text into manageable chunks, and generating vector embeddings for each chunk. These embeddings are stored in a vector database like pgvector, which enables efficient similarity search.
+
+When a user asks a question, the system converts the query into an embedding using the same model used during ingestion. It then performs a similarity search against the stored chunk embeddings to find the most relevant passages. These passages are included as context in the prompt sent to the language model, which generates a response grounded in the retrieved information.
+
+Chunking is a critical step in the RAG pipeline. Documents need to be split into pieces that are small enough to be relevant and focused, but large enough to contain meaningful context. Common strategies include fixed-size character splitting, recursive character splitting (which respects document structure), and semantic splitting based on topic boundaries.
+
+Embedding models convert text into dense vector representations that capture semantic meaning. Similar texts produce similar vectors, enabling semantic search. Models like OpenAI's text-embedding-3-small or open-source alternatives like BGE and Qwen produce high-quality embeddings suitable for RAG applications.
+
+Vector databases like pgvector extend PostgreSQL with vector similarity search capabilities. They support different distance metrics including cosine similarity, inner product, and L2 distance. Indexing strategies like IVFFlat and HNSW enable fast approximate nearest neighbor search at scale.
+
+Hybrid search combines vector similarity search with traditional keyword-based search (like BM25) to get the best of both approaches. Vector search excels at finding semantically similar content, while keyword search is better for exact matches and rare terms. Reciprocal Rank Fusion (RRF) is a common technique for combining results from multiple search methods.
+
+Reranking is an additional step that can improve retrieval quality. After initial retrieval, a cross-encoder model re-scores the candidate passages against the original query. This is more computationally expensive than embedding-based retrieval but produces more accurate relevance scores.
+
+Metadata extraction uses language models to automatically identify structured information from documents, such as titles, authors, topics, and document types. This metadata can be used to filter the search space before semantic matching, improving both relevance and performance.
+
+The Model Context Protocol (MCP) provides a standardized way for AI assistants to interact with external tools and data sources. An MCP server exposes tools that the AI can call, enabling capabilities like document ingestion, search, and database queries without the AI needing direct access to these systems.
