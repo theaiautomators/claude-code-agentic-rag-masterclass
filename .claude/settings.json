@@ -1,35 +1,39 @@
 {
-    "permissions": {
-      "allow": [
-        "WebFetch(domain:*)",
-        "Bash(npm run:*)",
-        "Bash(npm test:*)",
-        "Bash(npm install:*)",
-        "Bash(npm run dev:*)",
-        "Bash(npm run build:*)",
-        "Bash(npm run lint:*)",
-        "Bash(npx:*)",
-        "Bash(pnpm:*)",
-        "Bash(yarn:*)",
-        "Bash(bun:*)",
-        "Bash(python3:*)",
-        "Bash(python:*)",
-        "Bash(git diff:*)",
-        "Bash(git status:*)",
-        "Bash(git log:*)",
-        "Bash(git add:*)",
-        "Bash(git commit:*)"
-      ],
-      "deny": [
-        "Bash(sudo:*)",
-        "Bash(docker:*)",
-        "Bash(rm -rf:*)",
-        "Read(./.env)",
-        "Read(~/.ssh/**)"
-      ],
-      "ask": [
-        "Bash(git push:*)"
-      ],
-      "defaultMode": "acceptEdits"
-    }
+  "permissions": {
+    "allow": [
+      "Bash(npm run:*)",
+      "Bash(npm test:*)",
+      "Bash(npm install:*)",
+      "Bash(pnpm:*)",
+      "Bash(yarn:*)",
+      "Bash(bun:*)",
+      "Bash(python3:*)",
+      "Bash(python:*)",
+      "Bash(git diff:*)",
+      "Bash(git status:*)",
+      "Bash(git log:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)"
+    ],
+    "deny": [
+      "Bash(sudo:*)",
+      "Bash(docker:*)",
+      "Bash(rm -rf:*)",
+      "Bash(rm -fr:*)",
+      "Bash(rm -r -f:*)",
+      "Bash(rm -f -r:*)",
+      "Read(**/.env)",
+      "Read(**/.env.*)",
+      "Edit(**/.env)",
+      "Edit(**/.env.*)",
+      "Read(~/.ssh/**)",
+      "Read(~/.aws/**)"
+    ],
+    "ask": [
+      "WebFetch",
+      "Bash(npx:*)",
+      "Bash(git push:*)"
+    ],
+    "defaultMode": "acceptEdits"
   }
+}
