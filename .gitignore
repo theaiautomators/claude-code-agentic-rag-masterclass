@@ -1,0 +1,17 @@
+# Env files
+.env
+.env.local
+.env.*.local
+
+# Python
+backend/venv/
+.venv/
+__pycache__/
+
+# Node
+node_modules/
+dist/
+
+# Supabase CLI local state
+supabase/.temp/
+supabase/.branches/

@@ -13,11 +13,12 @@
       "Bash(git status:*)",
       "Bash(git log:*)",
       "Bash(git add:*)",
-      "Bash(git commit:*)"
+      "Bash(git commit:*)",
+      "Bash(docker:*)",
+      "Bash(supabase:*)"
     ],
     "deny": [
       "Bash(sudo:*)",
-      "Bash(docker:*)",
       "Bash(rm -rf:*)",
       "Bash(rm -fr:*)",
       "Bash(rm -r -f:*)",

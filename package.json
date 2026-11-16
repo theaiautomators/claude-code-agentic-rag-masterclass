@@ -1,0 +1,25 @@
+{
+  "name": "claude-code-agentic-rag",
+  "version": "1.0.0",
+  "description": "Build an agentic RAG application from scratch by collaborating with Claude Code. Follow along with our video series using the docs in this repo.",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "supabase": "supabase"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ryac/claude-code-agentic-rag.git"
+  },
+  "keywords": [],
+  "author": "Ryan Yacyshyn",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/ryac/claude-code-agentic-rag/issues"
+  },
+  "homepage": "https://github.com/ryac/claude-code-agentic-rag#readme",
+  "devDependencies": {
+    "supabase": "^3.1.0"
+  },
+  "private": true
+}
